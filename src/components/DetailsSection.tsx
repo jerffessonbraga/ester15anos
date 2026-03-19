@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const SectionHeader = ({ tag, title }: { tag: string; title: string }) => (
   <>
