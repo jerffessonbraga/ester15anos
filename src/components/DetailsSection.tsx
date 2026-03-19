@@ -13,8 +13,6 @@ const SectionHeader = ({ tag, title }: { tag: string; title: string }) => (
 );
 
 const DetailsSection = ({ visible }: { visible: boolean }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   if (!visible) return null;
 
