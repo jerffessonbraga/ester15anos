@@ -25,8 +25,6 @@ const initialGifts: Gift[] = [
 ];
 
 const GiftsSection = ({ visible }: { visible: boolean }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [gifts, setGifts] = useState(initialGifts);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Gift | null>(null);

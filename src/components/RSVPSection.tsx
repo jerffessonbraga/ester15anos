@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const RSVPSection = ({ visible }: { visible: boolean }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState<{ name: string; attending: boolean } | null>(null);
   const [name, setName] = useState('');
