@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Gift {
   id: number;
@@ -25,8 +25,6 @@ const initialGifts: Gift[] = [
 ];
 
 const GiftsSection = ({ visible }: { visible: boolean }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [gifts, setGifts] = useState(initialGifts);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Gift | null>(null);
@@ -47,9 +45,9 @@ const GiftsSection = ({ visible }: { visible: boolean }) => {
 
   return (
     <motion.section
-      ref={ref}
       initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7 }}
       className="py-16 px-6 max-w-[700px] mx-auto text-center"
     >

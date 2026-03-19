@@ -1,9 +1,7 @@
-import { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const RSVPSection = ({ visible }: { visible: boolean }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState<{ name: string; attending: boolean } | null>(null);
   const [name, setName] = useState('');
@@ -19,9 +17,9 @@ const RSVPSection = ({ visible }: { visible: boolean }) => {
 
   return (
     <motion.section
-      ref={ref}
       initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7 }}
       className="py-16 px-6 max-w-[500px] mx-auto text-center pb-24"
     >

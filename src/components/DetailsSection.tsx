@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const SectionHeader = ({ tag, title }: { tag: string; title: string }) => (
   <>
@@ -14,8 +13,6 @@ const SectionHeader = ({ tag, title }: { tag: string; title: string }) => (
 );
 
 const DetailsSection = ({ visible }: { visible: boolean }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   if (!visible) return null;
 
@@ -28,9 +25,9 @@ const DetailsSection = ({ visible }: { visible: boolean }) => {
 
   return (
     <motion.section
-      ref={ref}
       initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7 }}
       className="py-16 px-6 max-w-[860px] mx-auto text-center"
     >
