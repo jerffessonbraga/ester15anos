@@ -5,7 +5,7 @@ import photoImg from '@/assets/photo.jpg';
 
 const PhotoSection = ({ visible }: { visible: boolean }) => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-50px' });
 
   if (!visible) return null;
 
@@ -28,11 +28,11 @@ const PhotoSection = ({ visible }: { visible: boolean }) => {
           }}
         />
 
-        {/* Photo with improved Soft Reveal & Scale animation */}
+        {/* Photo with Soft Reveal & Scale animation */}
         <motion.div
           className="relative z-[1] overflow-hidden rounded-2xl"
-          initial={inView ? undefined : { opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-          animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : { opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
+          initial={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
+          animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : undefined}
           transition={{
             duration: 2,
             ease: [0.22, 1, 0.36, 1],
@@ -97,7 +97,8 @@ const PhotoSection = ({ visible }: { visible: boolean }) => {
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ delay: 1.5, duration: 0.8 }}
         className="mt-7 font-script text-[clamp(1.8rem,5.5vw,2.6rem)] text-ll"
         style={{ textShadow: '0 2px 14px rgba(124,58,191,0.35)' }}
