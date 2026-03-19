@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface Gift {
   id: number;
